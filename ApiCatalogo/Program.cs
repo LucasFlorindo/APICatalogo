@@ -24,6 +24,7 @@ var app = builder.Build();
 
 //definir Endpoints (Methods)
 //Cria nova categoria
+
 app.MapPost("/categorias", async (Categoria categoria, AppDbContext db) =>
 {
     db.Categorias.Add(categoria);
@@ -135,7 +136,7 @@ app.MapPut("/produtos/{id:int}", async (int id, Produto produto, AppDbContext db
 });
 
 //Deleta um produto pelo seu id
-app.MapDelete("/categorias/{id:int}", async (int id, AppDbContext db) =>
+app.MapDelete("/produtos/{id:int}", async (int id, AppDbContext db) =>
 {
     var produto = await db.Produtos.FindAsync();
 
