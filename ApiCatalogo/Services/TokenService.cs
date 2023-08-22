@@ -14,7 +14,7 @@ namespace ApiCatalogo.Services
         {
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Name, user.userName),
                 new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString()),
             };
 
