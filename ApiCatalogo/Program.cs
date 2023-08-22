@@ -17,9 +17,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
+//Service Collection
 builder.AddApiSwagger();
 builder.AddPersistence();
 builder.Services.AddCors();
@@ -27,15 +25,14 @@ builder.AddAutenticationJwt();
 
 var app = builder.Build();
 
+//Endpoints com métodos
 app.MapAutenticacaoEndpoints();
-
 app.MapCategoriasEndpoints();
-
 app.MapProdutosEndpoints();
 
-// Configure the HTTP request pipeline.
-var environment = app.Environment;
 
+//Definição de swagger, tratamento de esxceções e política cors
+var environment = app.Environment;
 app.UseExceptionHandling(environment)
     .UseSwaggerMiddleware()
     .UseAppCors();
